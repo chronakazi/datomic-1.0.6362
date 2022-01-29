@@ -1,4 +1,4 @@
-FROM clojure:openjdk-8-lein-slim-buster
+FROM clojure:openjdk-18-lein-alpine
 
 MAINTAINER Matt Brewster "seshup.tech@gmail.com"
 
@@ -6,8 +6,7 @@ ENV DATOMIC_VERSION 1.0.6362
 ENV DATOMIC_HOME /opt/datomic-pro-$DATOMIC_VERSION
 ENV DATOMIC_DATA $DATOMIC_HOME/data
 
-RUN apt-get update
-RUN apt-get install -y unzip curl
+RUN apk add --no-cache unzip curl
 
 # Datomic Pro Starter as easy as 1-2-3
 # 1. Create a .credentials file containing user:pass
